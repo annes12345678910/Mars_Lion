@@ -6,20 +6,57 @@ Pygame.inut()
 
 fps = 45
 timer = pygame.time.Clock()
-Whith = 1200
-Height = 1000
-
+WHITH = 1200
+HEIGHT = 1000
+active_size = 0
+active_color = (255, 0, 0)
 screen = pygame.display.set_mode([WIDTH, Height])
 pygame.display.set_caption('Paint!')
 
 
+def draw_menu():
+  pygame.draw.rect(screen, (0, 127, 127), [0, 0, WHITH, 100])
+  pygame.draw.line(sreen, 255, 0, 0), (0, 70), (WIDTH,100), 3)
+  m_brush = pygame.draw.rect(screen, (255,0,0), [10, 10, 50, 50])
+  pygame.draw.circle(screen, (0, 255, 255), (50, 35), 20)
+  s_brush = pygame.draw.rect(screen, (255, 0, 0), [60, 10, 50, 50])
+  pygame.draw.circle(screen, (0, 255 ,255), (100, 35), 10)
+  brush_list = [m_brush, s_brush]
+
+  blue = pygame.draw.rect(screen, (0, 0, 255), []WIDTH -50, 10, 50,50])
+  pink = pygame.draw.rect(screen, (255, 0, 255), []WIDTH -50, 50, 50,50])
+  cyan = pygame.draw.rect(screen, (0, 255, 255), []WIDTH -100, 10, 50,50])
+  green = pygame.draw.rect(screen, (0, 0, 255), []WIDTH -100, 50, 50,50])
+  white = pygame.draw.rect(screen, (255, 255, 255), []WIDTH -160, 10, 50,50])
+  black = pygame.draw.rect(screen, (0, 0, 0), []WIDTH -160, 60, 50,50])
+  yellow = pygame.draw.rect(screen, (255, 255, 0), []WIDTH -200, 60, 50,50])
+  red = pygame.draw.rect(screen, (255, 255, 0), []WIDTH -255, 10p;, 50,50])
+  color_rect = [blue, pink, cyan, green, white, black, yellow, red]
+  rgb_list = [(0, 0, 255), (255, 0, 255), (0, 255, 255), (255, 255, 255), (0, 0, 0), (255, 255, 0), (255, ,0 ,0)]
+  return brush_list, color_rect, rgb_list
+  
+
 run = True 
 while run:  
   timer.tick(fps)
-  screen.fill(255, 127, 127)
-
+  screen.fill(0, 255, 255)
+  mouse = pygame.mouse.get_pos()
+  if mouse[1] > 100:
+    pygame.draw.circle(screen, active_color, mouse active_size)
+  brushes, colors, rgbs = draw_menu()
+  
   for event in pygame.event.get():
      if event.type == pygame.QUIT:
         run = False
+       
+     if event.type == pygame.MOUSEBUTTONDOWN:
+       for i in range(lan(brushes)):
+         if brushes[i].collidepoint(event.pos)
+           active_size = 5 - i
+
+        for i in range(lan(colors)):
+          if colors[i].collidepoint(event.pos)
+            active_corlor = rgb[i]
+         
   Pygame.display.flip()
 Pygame.quit()
